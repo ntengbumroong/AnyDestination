@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import axios from "axios";
 import './WeatherApp.css';
-// import { withRouter } from "react-router";
+import { withRouter } from "react-router";
 
-export default class Weather extends Component {
+class Weather extends Component {
     constructor(props)  {
         super(props);
         this.state = {
@@ -27,21 +27,32 @@ export default class Weather extends Component {
         this.setState({search: this.state.location});
         this.setState({isSearched: true});
         axios.get(`/weatherRequest?loc=${this.state.location}`).then(response => {
-            this.setState({
-                weather: Math.round(response.data.temp - 273.15)
-            }); 
+            console.log(response);
+            // this.setState({
+            //     // weather: Math.round(response.data.temp - 273.15)
+            //     weather: response.data
+            // });
+            
+            // turns JSON repsonse into arrays to be pushed
+            const allInfo = [this.state.location, Object.entries(response.data.parsedBody.main), Object.entries(response.data.parsedBody.weather[0])]
+            console.log(allInfo);
+            this.props.history.push({
+                pathname: '/WeatherInfo',
+                state: allInfo
+            }) 
         });
         event.preventDefault();
+        
     };
 
     render() {
         const isSearched = this.state.isSearched;
         let searchLabel;
         if (isSearched) {
-            searchLabel= <h1> The weather in {this.state.search} is: {this.state.weather}°C</h1>
-            // searchLabel= `The weather in ${this.state.search} is: ${this.state.weather}°C`
+            // searchLabel= <h1> The weather in {this.state.search} is: {this.state.weather}°C</h1>
+            searchLabel = <h2>Loading...</h2>
         } else {
-            searchLabel = <h1>Enter a location</h1>
+            searchLabel = <h2>Enter a location</h2>
         }
         return (
             <div>
@@ -58,3 +69,5 @@ export default class Weather extends Component {
         );
     }
 }
+
+export default withRouter(Weather);
