@@ -10,17 +10,19 @@
 
 #inputBox{
     max-width: 100%;
+    width: 450px;
     box-sizing: border-box;
     border: 2px solid #ccc;
     border-top-left-radius: 75px;
     border-bottom-left-radius: 75px;
-    font-size: 16px;
+    font-size: 20px;
     background-color: white;
     background-image: url('assets/searchIcon.png');
     background-size: contain;
     background-position: 3px 2px; 
     background-repeat: no-repeat;
-    padding: 12px 20px 12px 50px;
+    padding: 12px 20px 12px 60px;
+    outline: none;
     resize: none;
 }
 
@@ -30,9 +32,23 @@
     border-top-right-radius: 75px;
     border-bottom-right-radius: 75px;
     border-left: none;
-    font-size: 16px;
+    font-size: 20px;
     background-color: white;
     padding: 12px 15px 12px 10px;
     color: rgb(5, 42, 54);
+}
+
+#submitButton:hover {
+    background: #3071A9
+}
+
+#invalid {
+    color: rgb(209, 0, 0);
+    font-size: large;
+    padding-top: 15px;
+}
+
+#search {
+    width: 100%;
 }
 
