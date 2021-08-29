@@ -63,7 +63,6 @@ class Weather extends Component {
         return (
             <div id="search">
                 <Container >
-                    <Row>
                         <form className="form" onSubmit={this.handleSubmit}>
                             <label id="searchLabel">
                                 <input id="inputBox" type="text" placeholder="Search for a city..." defaultValue={this.state.location} onChange={this.handleChange} autoComplete="off"></input>
@@ -73,9 +72,7 @@ class Weather extends Component {
                         <label>
                             {searchLabel}
                         </label>
-                    </Row>
-                </Container>
-                
+                </Container>     
             </div>
         );
     }
