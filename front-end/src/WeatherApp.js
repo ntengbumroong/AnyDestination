@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import './WeatherApp.css';
 import { withRouter } from "react-router";
-import { Container, Row } from "reactstrap";
+import { Container } from "reactstrap";
 
 class Weather extends Component {
     constructor(props)  {
