@@ -30,11 +30,11 @@ class Weather extends Component {
         console.log(this.state.location);
         this.setState({search: this.state.location});
         this.setState({isSearched: true});
-        axios.get(`/weatherRequest?loc=${this.state.location}`).then(async response => {
+        axios.get(`https://any-destination.herokuapp.com/weatherRequest?loc=${this.state.location}`).then(async response => {
             console.log(response);
             if (response.data !== "Error") {
                 
-                const usResponse =  await axios.get(`/imgRequest?img=${this.state.location}`);
+                const usResponse =  await axios.get(`https://any-destination.herokuapp.com/imgRequest?img=${this.state.location}`);
 
                 // turns JSON repsonse into arrays to be pushed
                 const allInfo = [this.state.location, Object.entries(response.data.parsedBody.main), Object.entries(response.data.parsedBody.weather[0]), usResponse.data.results]

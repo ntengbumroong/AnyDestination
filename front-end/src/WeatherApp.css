@@ -1,6 +1,8 @@
 .form{
     outline-offset: 0px;
     width: auto;
+    align-content: center;
+    justify-content: center;
 }
 
 #searchLabel{
