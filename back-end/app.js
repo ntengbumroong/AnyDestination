@@ -7,7 +7,12 @@ const { createApi } = pkg;
 const express = require("express");
 var request = require("request");
 const app= express();
+const cors = require('cors');
 const port = process.env.PORT || 5000;
+
+app.use(cors({
+    origin: ['http://localhost:3000/', 'https://any-destination.netlify.app/']
+}))
 
 app.get('/', (req, res) => res.send('Hello World!'));
 
